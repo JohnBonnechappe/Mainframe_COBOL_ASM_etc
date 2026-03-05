@@ -1,0 +1,23 @@
+//*
+//* Use IEBGENER to copy a PS dataset
+//* NOTE: job fails if SYSUT2 already exists
+//*       so use IDCAMS to check if SYSUT2 exists 
+//*       then IEFBR14 to delete SYSUT2 if it already exists.
+//*
+//STEP01  EXEC PGM=IDCAMS
+//SYSPRINT    DD DUMMY
+//SYSIN       DD *
+  LISTCAT ENTRIES ('Z63454.EXAMPLES.DATAP2')
+//*
+//STEP02  EXEC PGM=IEFBR14,COND=(0,GT,STEP01)
+//DEL         DD DSN=Z63454.EXAMPLES.DATAP2,DISP=(OLD,DELETE,DELETE)
+//*
+//STEP03  EXEC PGM=IEBGENER,COND=(4,GT)
+//SYSUT1      DD DSN=Z63454.EXAMPLES.DATAP1,DISP=SHR
+//SYSUT2      DD DSN=Z63454.EXAMPLES.DATAP2,
+//            DISP=(NEW,CATLG,DELETE),
+//            SPACE=(TRK,(2,1),RLSE),
+//            DCB=(DSORG=PS,RECFM=FB,LRECL=80,BLKSIZE=800)
+//SYSPRINT    DD SYSOUT=*
+//SYSIN       DD DUMMY
+/*
