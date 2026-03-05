@@ -1,0 +1,22 @@
+//GENER03 JOB 1,JOHNB,TIME=(1,1),NOTIFY=&SYSUID
+//*
+//* Use IEBGENER to copy a PS dataset
+//* NOTE: job fails if SYSUT2 already exists
+//*       so use IDCAMS to check if SYSUT2 exists 
+//*       and delete if it already exists.
+//*
+//STEP01  EXEC PGM=IDCAMS
+//SYSPRINT    DD DUMMY
+//SYSIN       DD *
+  DELETE Z63454.EXAMPLES.DATAP2
+  IF MAXCC = 8 THEN SET MAXCC = 0
+//*
+//STEP03  EXEC PGM=IEBGENER
+//SYSUT1      DD DSN=Z63454.EXAMPLES.DATAP1,DISP=SHR
+//SYSUT2      DD DSN=Z63454.EXAMPLES.DATAP2,
+//            DISP=(NEW,CATLG,DELETE),
+//            SPACE=(TRK,(2,1),RLSE),
+//            DCB=(DSORG=PS,RECFM=FB,LRECL=80,BLKSIZE=800)
+//SYSPRINT    DD SYSOUT=*
+//SYSIN       DD DUMMY
+/*
