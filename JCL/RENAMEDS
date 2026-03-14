@@ -1,4 +1,4 @@
-//JOB 1,JOHNB,TIME=(1,1),NOTIFY=&SYSYUID
+//RENAMEDS JOB 1,JOHNB,TIME=(1,1),NOTIFY=&SYSYUID
 //*
 //* Rename a dataset
 //*
