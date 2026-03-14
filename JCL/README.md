@@ -8,4 +8,7 @@
 
 👍 PDS2PDSE
    copies a PDS to PDSE.
-   You can delete the old PDS or keep it as a backup.
+     You can delete the old PDS or keep it as a backup.
+
+👍 RENAMEDS
+     Rename a dataset
