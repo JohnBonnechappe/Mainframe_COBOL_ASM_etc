@@ -1,3 +1,4 @@
+//GENER02 JOB 1,JOHNB,TIME=(1,1),NOTIFY=&SYSUID
 //*
 //* Use IEBGENER to copy a PS dataset
 //* NOTE: job fails if SYSUT2 already exists
