@@ -1,0 +1,17 @@
+//PDSTOE JOB 1,JOHNB,TIME=(1,1),NOTIFY=&SYSUID
+//*
+//* Convert a PDS to PDSTOE
+//* copies all members to the new library
+//* Author:       John Braddock
+//* Date-Written: 15-Mar-2026
+//*
+//STEP1   EXEC PGM=IEBCOPY
+//SYSUT1      DD DSN=&SYSUID..PETRONET.JCL,DISP=SHR
+//SYSUT2      DD DSN=&SYSUID..PETRONET.JCL1,
+//            DISP=(NEW,CATLG,DELETE),
+//            SPACE=(TRK,(20,2,6),RLSE),
+//            DCB=(DSORG=PO,RECFM=FB,LRECL=80,BLKSIZE=800),
+//            DSNTYPE=LIBRARY
+//SYSPRINT    DD SYSOUT=*
+//SYSIN       DD DUMMY
+//*            SELECT MEMBER=(A,B,C)    (* select members if desired)
