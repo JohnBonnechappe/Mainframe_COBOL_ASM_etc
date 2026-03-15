@@ -1,0 +1,49 @@
+//INTRRDR JOB 1,JOHNB,TIME=(1,1),NOTIFY=&SYSUID
+//*
+//* Write some text to a MEMBER in a new PDS
+//* The text is for a new job.
+//* Then submit this new job to JES through INTRDR
+//* The submitted job writes it's result into a new member
+//* in the same PDS
+//*
+//* This way the job and it's result are both saved into
+//* the same PDS
+//*
+//* Author:       John Braddock
+//* Date-Written: 15-Mar-2026
+//*
+//*----------------------------------------------------
+//*
+//* First write the test to a PS dataset
+//*
+//STEP03  EXEC PGM=IEBGENER
+//SYSUT1      DD *
+  //SUBEDJOB JOB 1,JOHNB,TIME=(1,1),NOTIFY=&SYSUID
+  //STEP01  EXEC PGM=IEBGENER
+  //SYSUT1      DD *
+  Too many cooks spoil the broth
+  Many hands make light work
+  //SYSUT2      DD DSN=Z63454.EXAMPLES.DATAP10(JOB1OUT),
+  //            DISP=(NEW,CATLG,DELETE),
+  //            SPACE=(TRK,(5,2,2),RLSE),
+  //            DCB=(DSORG=PO,RECFM=FB,LRECL=80,BLKSIZE=800)
+  //SYSPRINT    DD SYSOUT=*
+  //SYSIN       DD DUMMY
+//*
+//SYSUT2      DD DSN=Z63454.EXAMPLES.DATAP10(JOB1),
+//            DISP=(NEW,CATLG,DELETE),
+//            SPACE=(TRK,(5,2,2),RLSE),
+//            DCB=(DSORG=PO,RECFM=FB,LRECL=80,BLKSIZE=800)
+//SYSPRINT    DD SYSOUT=*
+//SYSIN       DD DUMMY
+//*------------------------------------------------------
+//* Now submit this job to JES
+//*
+//STEP1   EXEC PGM=IEBGENER
+//SYSUT1      DD DSN=Z63454.EXAMPLES.DATAP10(JOB1),
+//            DISP=SHR
+//SYSUT2      DD SYSOUT=(,INTRDR)
+//SYSPRINT DD SYSOUT=*
+//SYSIN    DD DUMMY
+/*
+
