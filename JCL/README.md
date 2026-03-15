@@ -1,5 +1,8 @@
 # Some useful JCL code
 
+👍 DISPSYM
+   Display symbols in JCL
+
 👍 GENER02
    copy a PS dataset
 
