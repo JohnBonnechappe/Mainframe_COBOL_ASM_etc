@@ -11,7 +11,12 @@
 
 👍 PDS2PDSE
    copies a PDS to PDSE.
+
      You can delete the old PDS or keep it as a backup.
 
 👍 RENAMEDS
      Rename a dataset
+
+👍 WRITEMBR
+
+     WRite some text from the JCL into a PS dataset and into a member
