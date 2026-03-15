@@ -1,0 +1,36 @@
+//DISPSIM JOB 1,JOHNB,TIME=(1,1),NOTIFY=&SYSUID
+//*
+//* Write some text to a new Dataset and to a new MEMBER
+//*
+//* Author:       John Braddock
+//* Date-Written: 15-Mar-2026
+//*
+//*----------------------------------------------------
+//*
+//* First write the test to a PS dataset
+//*
+//STEP01  EXEC PGM=IEBGENER
+//SYSUT1      DD *
+Too many cooks spoil the broth
+Many hands make light work
+//SYSUT2      DD DSN=Z63454.EXAMPLES.DATAP3,
+//            DISP=(MOD,CATLG,DELETE),
+//            SPACE=(TRK,(2,1),RLSE),
+//            DCB=(DSORG=PS,RECFM=FB,LRECL=80,BLKSIZE=800)
+//SYSPRINT    DD SYSOUT=*
+//SYSIN       DD DUMMY
+//*
+//*---------------------------------------------------
+//* Now write some text to a new member in a PDS
+//*
+//STEP03  EXEC PGM=IEBGENER
+//SYSUT1      DD *
+Too many cooks spoil the broth
+Many hands make light work
+//SYSUT2      DD DSN=Z63454.EXAMPLES.DATAP5(PROVERB1),
+//            DISP=(NEW,CATLG,DELETE),
+//            SPACE=(TRK,(5,2,2),RLSE),
+//            DCB=(DSORG=PO,RECFM=FB,LRECL=80,BLKSIZE=800)
+//SYSPRINT    DD SYSOUT=*
+//SYSIN       DD DUMMY
+/*
