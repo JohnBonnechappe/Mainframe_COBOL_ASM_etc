@@ -1,0 +1,45 @@
+//DISPSIM JOB 1,JOHNB,TIME=(1,1),NOTIFY=&SYSUID
+//*
+//* Using JCL and system symbols.
+//* Set some JCL symbols
+//* Show different way that symbols can be used
+//* Then display all JCL symbols
+//*
+//* Author:       John Braddock
+//* Date-Written: 15-Mar-2026
+//*
+//*----------------------------------------------------
+//*
+//* Some common system symbols
+//* &SYSUID
+//* &SYSDATE  (yyyymmdd)
+//* &SYSTIME  (hhmmss)
+//* &SYSNAME
+//* &SYSPLEX
+//* &JOBNAME
+//*
+//* some useful functions
+//* SUBSTR()     eg SUBSTR(&SYSDATE,1,4)
+//* LENGTH()     eg LENGTH(&TEXT)
+//* INDEX()      eg INDEX(&TEXT,'ABC')
+//*
+//*---------------------------------------------------
+//        SET VARN1=1729
+//*
+//        SET VARN2=12*12*12
+//        SET VARN3=1*1*1
+//        SET VARNOUT=&VARN1+&VARN2
+//*
+//        SET VART1='Sum of '
+//        SET VART2='Cubes'
+//        SET VARCON='&VART1..&VART2'
+//        SET VARSUB=SUBSTR(&VART1,1,3)
+//*
+//        SET VARDSN='&SYSUID..EXAMPLES.NEWDS'
+//*
+//*
+//STEP02  EXEC PGM=IEFBR14
+//SYMLIST     DD SYSOUT=*
+//SYSPRINT    DD SYSOUT=*
+//SYSIN       DD DUMMY
+/*
