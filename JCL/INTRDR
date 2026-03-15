@@ -24,9 +24,7 @@
   Too many cooks spoil the broth
   Many hands make light work
   //SYSUT2      DD DSN=Z63454.EXAMPLES.DATAP10(JOB1OUT),
-  //            DISP=(NEW,CATLG,DELETE),
-  //            SPACE=(TRK,(5,2,2),RLSE),
-  //            DCB=(DSORG=PO,RECFM=FB,LRECL=80,BLKSIZE=800)
+  //            DISP=(SHR,KEEP,KEEP)
   //SYSPRINT    DD SYSOUT=*
   //SYSIN       DD DUMMY
 //*
@@ -46,4 +44,3 @@
 //SYSPRINT DD SYSOUT=*
 //SYSIN    DD DUMMY
 /*
-
