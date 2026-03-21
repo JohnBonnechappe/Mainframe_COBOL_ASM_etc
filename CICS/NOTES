@@ -1,31 +1,57 @@
-CICS is an app seever and transaction monitor 
+CICS is an app server and transaction monitor 
 that allows an app to be accessed 
 interactively from a terminal 
-or browser.
+or browser connected to an IBM mainframe.
 
-The tesources that CIVS needs for 
+The tesources that CICS needs for 
 this is collectively called the
 CICS region.
 
 Each interaction through CICS 
 is called a transaction, and is
-facilitated through a task which 
+facilitated through a CICS task which 
 can invoke multiple programs, 
 typically written in COBOL.
 
-Design of a terminal svreen is done using a 
+Design of a CICS terminal screen is done using a 
 facility called BMS (basic mapping support) 
 and involves creating a map of 
 the terminal screen in which 
-are places the various artifacts such as IO fields needed for tge trandavtion.
+are places the various artifacts such as IO fields needed 
+for the transaction.
 
-Punters coming from a VMS background may 
-equate a task with ACMS and BMS with 
+Developers coming from a VMS background may 
+equate a CICS task with ACMS, and BMS with 
 DECFORMS which achieve a similar 
-result. Although DECFORMS being provedural msy arguably achieve the
+result. Although DECFORMS being procedural may arguably achieve the
 status of a task.
 
-To get stsrted the following steps are required.
-1) Define and boot up a CICS region. Typically via JCL jobs.
+To get started, the following steps are required.
+1) Define and boot up a CICS region.
+Typically via JCL jobs.
 2) Get your APPLID from the log files labelled DFH115.
-3) 
+3) Log onto the CICS region from the
+typical ZOS logon screen by specifying APPLID=applid
+4) use the following CICS commands
+    CESN to log in (if not already on)
+    SESF to log off
+    CEDA to manage resources including
+         tasks, programs, files, terminals
+    CEMT to manage the CICS region.
+5) run your transaction.
+
+Transactions in CICS are identified by a four character code defined in CEDA.
+CEDA is also used to identify which programs the task needs and which PDS library holds then.
+Files must also be declared as well as terminals.
+
+Because CICS knows what files (datasets) are involved in a transaction they can be rilled back as well as the database if a program abends.
+
+Programs need to be written with EXEC CICS 
+statements and so must be precimpuled before
+compilation. If DB2 is used by 
+the program them the program must 
+also be precompiled for DB2 as well.
+Note that because these programs may resude 
+in storage and run by multiple 
+users they must be compiled with the 
+RENT (re-entrant) parameter.
