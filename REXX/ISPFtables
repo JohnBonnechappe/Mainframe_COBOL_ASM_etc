@@ -1,0 +1,15 @@
+ISPF tables are a way to organize data similar to tables in DB2
+
+They are convenient for REXX apps.
+
+Each table is stored in a PDS called ISPTLIB which must be allocated to a dataset.
+
+Tables are created 
+
+Typical REXX commands for use with ISPF tables are:
+TBCREATE
+TBADD
+TBGET
+TBSCAN
+
+However ISPF tables are not a database so many of the features of DB2 such as SQL do not apply.
