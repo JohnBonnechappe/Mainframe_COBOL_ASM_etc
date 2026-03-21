@@ -1,1 +1,15 @@
+ISPF panels can be constructed to assist with applications for purposes such as data entry, running queries, and other common tasks.
 
+Panels are defined using PDL (panel definition language) and are stored in panel libraries for use with REXX (or CLISTS).
+
+Panel definitions are stored as members in a PDS called ISPPLIB.
+
+The panel definition is divided into sections where attributes of fields are declared, then a processing section.
+
+The procedure is:
+
+1) use ISPF edit to create and edit a new member in ISPPLIB
+
+2) test the appearance of the panel in ISPF 7
+
+3) add REXX code to complete the app.
