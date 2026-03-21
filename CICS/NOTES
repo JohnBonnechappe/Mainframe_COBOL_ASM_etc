@@ -1,0 +1,31 @@
+CICS is an app seever and transaction monitor 
+that allows an app to be accessed 
+interactively from a terminal 
+or browser.
+
+The tesources that CIVS needs for 
+this is collectively called the
+CICS region.
+
+Each interaction through CICS 
+is called a transaction, and is
+facilitated through a task which 
+can invoke multiple programs, 
+typically written in COBOL.
+
+Design of a terminal svreen is done using a 
+facility called BMS (basic mapping support) 
+and involves creating a map of 
+the terminal screen in which 
+are places the various artifacts such as IO fields needed for tge trandavtion.
+
+Punters coming from a VMS background may 
+equate a task with ACMS and BMS with 
+DECFORMS which achieve a similar 
+result. Although DECFORMS being provedural msy arguably achieve the
+status of a task.
+
+To get stsrted the following steps are required.
+1) Define and boot up a CICS region. Typically via JCL jobs.
+2) Get your APPLID from the log files labelled DFH115.
+3) 
